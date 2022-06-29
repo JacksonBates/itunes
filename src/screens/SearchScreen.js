@@ -32,6 +32,7 @@ export default function SearchScreen() {
 
   return (
     <React.Fragment>
+      <a href="https://github.com/JacksonBates/itunes">Link to repo</a>
       <Header>iTunes Album Search</Header>
       <Search
         handleSearchSubmit={handleSearchSubmit}
