@@ -1,24 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { AwaitingResults, SearchResults, Search } from "./components";
 
 function App() {
+  const [searchResults, setSearchResults] = React.useState([]);
+  const [searchTerm, setSearchTerm] = React.useState("");
+
+  const handleSearchSubmit = async (e) => {
+    e.preventDefault();
+    const data = await fetch(
+      `https://itunes.apple.com/search?term=${encodeURIComponent(
+        searchTerm
+      )}&entity=album`
+    ).then((response) => response.json());
+    setSearchResults(data.results);
+    setSearchTerm("");
+  };
+
+  const handleClear = () => {
+    setSearchResults([]);
+    setSearchTerm("");
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Search
+        handleSearchSubmit={handleSearchSubmit}
+        handleClear={handleClear}
+        setSearchTerm={setSearchTerm}
+        searchTerm={searchTerm}
+      />
+      {searchResults.length > 0 ? (
+        <SearchResults results={searchResults} />
+      ) : (
+        <AwaitingResults />
+      )}
+    </>
   );
 }
 
