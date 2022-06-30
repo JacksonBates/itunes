@@ -34,6 +34,7 @@ export default function Search({
         <Label>
           Enter search term here:&nbsp;
           <Input
+            name="search"
             placeholder="ex: warren zevon"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}

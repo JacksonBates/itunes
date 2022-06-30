@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { AwaitingResults, SearchResults, Search } from "../components";
 
-const Header = styled.div`
+const Header = styled.h1`
   background-color: #ddd;
   margin: 0;
   text-align: center;
