@@ -17,3 +17,9 @@ This demonstrates a light version of my preferred project structure when additio
 For speed of development I've colocated some of the StyledComponents in the same files as the components they affect / contain. On a larger project, these would likely be imported from separate files.
 
 I'd also usually avoid hard-coded spacing, color, and font values. Ideally, these would be defined in a themes.js file and accessed in the styled components for the sake of consistency.
+
+## Update
+
+I spent another 30mins or so implementing some initial tests including msw to mock server interactions etc.
+
+`yarn test` will run the test.
